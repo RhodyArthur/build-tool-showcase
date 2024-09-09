@@ -1,0 +1,56 @@
+[
+    {
+        "name": "webpack",
+        "description": "A module bundler for JavaScript applications. It takes modules with dependencies and generates static assets representing those modules.",
+        "url": "https://webpack.js.org/",
+        "icon": "https://webpack.js.org/assets/icon-square-big.svg"
+    },
+    {
+        "name": "parcel",
+        "description": "A zero-configuration web application bundler that aims to provide a faster and easier development experience.",
+        "url": "https://parceljs.org/",
+        "icon": "https://parceljs.org/logo.svg"
+    },
+    {
+        "name": "gulp",
+        "description": "A toolkit for automating time-consuming tasks in your development workflow. It uses code-over-configuration with streams and plugins.",
+        "url": "https://gulpjs.com/",
+        "icon": "https://gulpjs.com/images/gulp-logo.svg"
+    },
+    {
+        "name": "vite",
+        "description": "A modern build tool that provides a fast development environment and optimized build process, leveraging native ES modules.",
+        "url": "https://vitejs.dev/",
+        "icon": "https://vitejs.dev/logo.svg"
+    },
+    {
+        "name": "rollup",
+        "description": "A module bundler for JavaScript that compiles small pieces of code into something larger and more complex, such as a library or application.",
+        "url": "https://rollupjs.org/",
+        "icon": "https://rollupjs.org/logo.svg"
+    },
+    {
+        "name": "esbuild",
+        "description": "An extremely fast JavaScript bundler and minifier, written in Go, which focuses on speed and performance.",
+        "url": "https://esbuild.dev/",
+        "icon": "https://esbuild.dev/logo.svg"
+    },
+    {
+        "name": "snowpack",
+        "description": "A modern frontend build tool designed for speed and simplicity, optimized for working with JavaScript modules and fast refresh.",
+        "url": "https://www.snowpack.dev/",
+        "icon": "https://www.snowpack.dev/favicon.ico"
+    },
+    {
+        "name": "broccoli",
+        "description": "A JavaScript build tool for managing asset pipelines, especially for large JavaScript applications.",
+        "url": "https://broccoli.build/",
+        "icon": "https://broccoli.build/logo.svg"
+    },
+    {
+        "name": "brunch",
+        "description": "A build tool for front-end development that supports multiple templates and preprocessing languages with minimal configuration.",
+        "url": "http://brunch.io/",
+        "icon": "http://brunch.io/img/logo.png"
+    }
+]
