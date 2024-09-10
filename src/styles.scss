@@ -25,7 +25,7 @@ body {
     padding: 1.5rem 0;
     text-align: center;
   }
-}
+
 
 
 // Main content styles
@@ -35,27 +35,41 @@ main {
   margin: 0 auto;
   background-color: white;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  
+
+  .content {
+    display: flex;
+  gap: 2rem;
+  flex-direction: column;
+
+
 
   .item {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 2rem;
-    margin: 20px 0;
+    // margin: 20px 0;
+    // background-color: red;
+
+    img {
+        width: 150px;
+        height: 150px;
+    }
+
+    a {
+        text-decoration: none;
+
+        &:hover {
+            color: $primary-color;
+        }
+    }
+
   }
 
-  img {
-    width: 150px;
-    height: 150px;
-}
+  }
 
-a {
-    text-decoration: none;
-}
 
-a:hover {
-    color: $primary-color;
-}
 }
 
 // Footer styles
@@ -64,5 +78,7 @@ footer {
   padding: 1.5rem 0;
   background-color: $secondary-color;
   color: white;
+}
+
 }
 
