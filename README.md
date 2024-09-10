@@ -28,16 +28,21 @@ The project also includes:
    cd your-repository
 
 2. **Install Dependencies**
+    ```bash
     npm install
 
 3. **Start the development server**
+    ```bash
     npm start
 
 4. **Create a Production build**
+    ```bash
     npm run build
 
 5. **Run ESLint to check for code quality and style issues**
+    ```bash
     npm run lint
 
 6. **Run tests**
+    ```bash
     npm test
