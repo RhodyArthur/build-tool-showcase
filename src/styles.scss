@@ -1,0 +1,68 @@
+*, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+// Variables
+$primary-color: #0e6cff;
+$secondary-color: #333;
+$font-stack: Arial, sans-serif;
+
+// Base styles
+body {
+  font-family: $font-stack;
+  background-color: white;
+  color: $secondary-color;
+  width: 100%;
+  height: 100vh;
+  line-height: 1.2;
+  
+  // Header styles
+  header {
+    background-color: $primary-color;
+    color: white;
+    padding: 1.5rem 0;
+    text-align: center;
+  }
+}
+
+
+// Main content styles
+main {
+  max-width: 600px;
+  padding:  1.25rem;
+  margin: 0 auto;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  .item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    margin: 20px 0;
+  }
+
+  img {
+    width: 150px;
+    height: 150px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: $primary-color;
+}
+}
+
+// Footer styles
+footer {
+  text-align: center;
+  padding: 1.5rem 0;
+  background-color: $secondary-color;
+  color: white;
+}
+

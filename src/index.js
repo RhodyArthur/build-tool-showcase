@@ -1,3 +1,5 @@
+import './styles.scss';
+
 const mainContainer = document.querySelector('.content');
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -26,12 +28,17 @@ function renderData(data) {
     data.forEach(item => {
         const {name, description, url, icon} = item;
         htmlContent += 
-        `
+        `<div class="item">
                 <img src="${icon}" alt="${name}">
-                <h3 class="name">${name}</h3>
-                <p class="description">${description}</p>
-                <a href="${url}">Learn more</a>
+                <div class="text">
+                    <h2 class="name">${name}</h2>
+                    <p class="description">${description}</p>
+                    <a href="${url}" target="_blank">Learn more</a>
+                </div>
+        </div>
         `
     });
     mainContainer.innerHTML = htmlContent;
 }
+
+export {renderData};
