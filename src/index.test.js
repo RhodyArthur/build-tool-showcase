@@ -1,62 +1,88 @@
 import { renderData } from './index';
 
-describe('renderData', () => {
-    let contentSection;
+// Mock the DOM and the global fetch API
+beforeEach(() => {
+    document.body.innerHTML = '<section class="content"></section>';
 
-    beforeEach(() => {
-        // Set up the DOM for each test
-        document.body.innerHTML = `
-            <header>
-                <h1>Build Tool Showcase</h1>
-            </header>
-            <main>
-                <section class="content"></section>
-            </main>
-            <footer>&copy; 2024</footer>
-        `;
-        contentSection = document.querySelector('.content');
-    });
+    // Mock the global fetch API
+    global.fetch = jest.fn();
+});
 
-    it('should render data correctly into the content section', () => {
-        const sampleData = [
+afterEach(() => {
+    jest.clearAllMocks;
+})
+
+describe('index.js functionality', () => {
+
+
+    it('should fetch data and render it correctly', async () => {
+        // Mock data to be returned by the fetch
+        const mockData = [
             {
-                name: 'Item 1',
-                description: 'Description 1',
-                url: 'http://example.com/1',
-                icon: 'http://example.com/icon1.png'
+                name: 'Tool 1',
+                description: 'Description of Tool 1',
+                url: 'https://example.com/tool1',
+                icon: 'https://example.com/icon1.png'
             },
             {
-                name: 'Item 2',
-                description: 'Description 2',
-                url: 'http://example.com/2',
-                icon: 'http://example.com/icon2.png'
+                name: 'Tool 2',
+                description: 'Description of Tool 2',
+                url: 'https://example.com/tool2',
+                icon: 'https://example.com/icon2.png'
             }
         ];
 
-        renderData(sampleData, contentSection);
+        // Mock fetch response
+        global.fetch = jest.fn(() => 
+            Promise.resolve({
+                ok:true,
+                json: () => Promise.resolve(mockData)
+            })
+        )
 
-        const expectedHTML = `
-            <div class="item">
-                <img src="http://example.com/icon1.png" alt="Item 1">
-                <div class="text">
-                    <h2 class="name">Item 1</h2>
-                    <p class="description">Description 1</p>
-                    <a href="http://example.com/1" target="_blank">Learn more</a>
-                </div>
-            </div>
-            <div class="item">
-                <img src="http://example.com/icon2.png" alt="Item 2">
-                <div class="text">
-                    <h2 class="name">Item 2</h2>
-                    <p class="description">Description 2</p>
-                    <a href="http://example.com/2" target="_blank">Learn more</a>
-                </div>
-            </div>
-        `;
 
-        const renderedHTML = contentSection.innerHTML.trim();
-        const normalizedExpectedHTML = expectedHTML.trim().replace(/\s+/g, ' ');
+        // Import the module to trigger the DOMContentLoaded event handler
+        require('./index');
 
-        expect(renderedHTML).toBe(normalizedExpectedHTML);
+        // Wait for the DOMContentLoaded event handler to complete
+        await new Promise((resolve) => setTimeout(resolve, 0));
+
+        // Select the elements rendered by the function
+        const items = document.querySelectorAll('.item');
+
+        // Debug log to check if items are present
+        console.log('Number of items:', items.length);
+        console.log('Items:', items);
+
+        // Check if the number of items matches
+        expect(items.length).toBe(2);
+
+        // Check the content of the first item
+        const firstItem = items[0];
+        expect(firstItem.querySelector('.name').textContent).toBe('Tool 1');
+        expect(firstItem.querySelector('.description').textContent).toBe('Description of Tool 1');
+        expect(firstItem.querySelector('img').src).toBe('https://example.com/icon1.png');
+        expect(firstItem.querySelector('a').href).toBe('https://example.com/tool1/');
+
+        // Check the content of the second item
+        const secondItem = items[1];
+        expect(secondItem.querySelector('.name').textContent).toBe('Tool 2');
+        expect(secondItem.querySelector('.description').textContent).toBe('Description of Tool 2');
+        expect(secondItem.querySelector('img').src).toBe('https://example.com/icon2.png');
+        expect(secondItem.querySelector('a').href).toBe('https://example.com/tool2/');
+    });
+
+    it('should handle fetch errors gracefully', async () => {
+        fetch.mockResolvedValueOnce({
+            ok: false
+        });
+
+        require('./index');
+
+        await new Promise((resolve) => setTimeout(resolve, 0));
+
+        // Check if no items are rendered
+        const items = document.querySelectorAll('.item');
+        expect(items.length).toBe(0);
     });
 });
