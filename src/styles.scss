@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap');
 *, ::before, ::after {
     box-sizing: border-box;
     margin: 0;
@@ -7,7 +8,7 @@
 // Variables
 $primary-color: #0e6cff;
 $secondary-color: #333;
-$font-stack: Arial, sans-serif;
+$font-stack: "Red Hat Text", sans-serif;
 
 // Base styles
 body {
@@ -39,19 +40,26 @@ main {
 
   .content {
     display: flex;
-  gap: 2rem;
-  flex-direction: column;
+    flex-direction: column;
+    gap: 2rem;
 
 
 
   .item {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    gap: 2rem;
-    // margin: 20px 0;
-    // background-color: red;
+    gap: 1rem;
+    background-color: #f0f0f0;
+    padding: 1rem;
+    border-radius: 8px;
 
+    h2 {
+      background-color: white;
+      text-align: center;
+      text-transform: capitalize;
+      width: 100%;
+    }
     img {
         width: 150px;
         height: 150px;
@@ -59,10 +67,26 @@ main {
 
     a {
         text-decoration: none;
+        color: white;
 
         &:hover {
             color: $primary-color;
         }
+    }
+
+    button {
+      padding: 1rem 1.5rem;
+      background-color: $primary-color;
+      outline: none;
+      border: 1px solid transparent;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 12px;
+    }
+
+    p {
+      font-size: 1.25rem;
     }
 
   }

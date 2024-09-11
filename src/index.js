@@ -29,12 +29,12 @@ function renderData(data) {
         const {name, description, url, icon} = item;
         htmlContent += 
         `<div class="item">
+                <h2 class="name">${name}</h2>
                 <img src="${icon}" alt="${name}">
-                <div class="text">
-                    <h2 class="name">${name}</h2>
-                    <p class="description">${description}</p>
+                <p class="description">${description}</p>
+                <button>
                     <a href="${url}" target="_blank">Learn more</a>
-                </div>
+                </button>
         </div>
         `
     });
