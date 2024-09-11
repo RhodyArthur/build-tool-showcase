@@ -32,9 +32,7 @@ function renderData(data) {
                 <h2 class="name">${name}</h2>
                 <img src="${icon}" alt="${name}">
                 <p class="description">${description}</p>
-                <button>
-                    <a href="${url}" target="_blank">Learn more</a>
-                </button>
+                <a href="${url}" target="_blank">Learn more</a>
         </div>
         `
     });
